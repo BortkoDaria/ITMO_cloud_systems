@@ -10,7 +10,7 @@ spec:
             app: hello-app
         spec:
           containers:
-            - image: hello-world
+            - image: strm/helloworld-http
               name: hello-world
               ports:
                 - containerPort: 80
