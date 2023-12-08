@@ -3,7 +3,7 @@ WORKDIR /app
 
 RUN apt-get update
 
-COPY ./app.py ./
+COPY lab1_extra/app.py ./
 
 RUN groupadd -r user_grp && \
     useradd -r -g user_grp user
