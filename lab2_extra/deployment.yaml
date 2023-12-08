@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: hello
+    namespace: dev
+spec:
+    replicas: 2
+    selector:
+      matchLabels:
+        app: my-app
+    template:
+        metadata:
+          labels:
+            app: my-app
+        spec:
+          containers:
+            - image: strm/helloworld-http
+              name: hello-world
+              ports:
+                - containerPort: 80
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+    name: my-app-np
+    namespace: dev
+spec:
+    selector:
+      app: my-app
+    ports:
+    - protocol: TCP
+      port: 80
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+
+metadata:
+  name: new-ingress
+  namespace: dev
+
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - minikube.lab2
+    secretName: lab2-secret
+  rules:
+  - host: "minikube.lab2"
+    http:
+      paths:
+      - path: "/"
+        pathType: Prefix
+        backend:
+          service:
+            name: my-app-np
+            port:
+              number: 80
