@@ -82,4 +82,4 @@ spec:
 
 Посмотрим, какцю информацию о сертификате отображает браузер:
 
-![cert-info](./img/fake-cert.jpg)
+![cert-info](./img/fake_cert.jpg)
