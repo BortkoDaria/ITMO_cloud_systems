@@ -26,4 +26,4 @@ jobs:
       run: docker build . -f lab1_extra/new.Dockerfile -t dvbortko/hello-app
 
     - name: Push docker image
-      run: docker push dvbortko/hello-app
+      run: docker push megymikei/hello-app
