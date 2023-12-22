@@ -33,7 +33,7 @@ jobs:
         password: ${{ env.DOCKERHUB_TOKEN }}
 
     - name: Build docker image
-      run: echo $GITHUB_WORKSPACE && docker build . -f $GITHUB_WORKSPACE\ITMO_cloud_systems\ITMO_cloud_systems\lab1_extra\new.Dockerfile -t megymikei/hello-app
+      run: docker build . -f $GITHUB_WORKSPACE\ITMO_cloud_systems\ITMO_cloud_systems\lab1_extra\new.Dockerfile -t megymikei/hello-app
 
     - name: Push docker image
       run: docker push megymikei/hello-app
